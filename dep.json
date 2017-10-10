@@ -1,5 +1,0 @@
-{
-  "beego" : "github.com/astaxie/beego",
-  "orm" : "github.com/astaxie/beego/orm",
-  "mysqldriver" : "github.com/go-sql-driver/mysql"
-}
