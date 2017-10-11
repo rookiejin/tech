@@ -40,15 +40,19 @@ var Descriptions = []string{
 }
 
 var Thumb = []string {
-	"",
+	"http://odcijms8n.bkt.clouddn.com/laravel-vue-spa.jpg",
 }
 
+func RandomTitle() string{
+	rnd := rand.Intn(len(Titles) - 1)
+	return Titles[rnd]
+}
 
-func RandomString(n int) string{
-	b := make([]byte ,n)
-	for i:= 0 ; i < n ; i ++ {
-		rnd := rand.Intn(122 - 97) + 97
-		b[i] = byte(rnd)
-	}
-	return string(b)
+func RandomDescription() string {
+	rnd := rand.Intn(len(Descriptions) - 1)
+	return Descriptions[rnd]
+}
+
+func GetThumb() string {
+	return Thumb[0]
 }

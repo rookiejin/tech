@@ -7,6 +7,8 @@ import (
 	"log"
 	"tech/modules/setting"
 	"time"
+	"gopkg.in/macaron.v1"
+	"os"
 )
 
 const (
@@ -49,7 +51,13 @@ func init() {
 	if err := CreateSession("monotonic", MonotonicSession, setting.DbHost, setting.DbName, setting.DbUser, setting.DbPass); err != nil {
 		log.Fatalf("mongodb connection failed : %v", err)
 	}
-	fmt.Print("create session success")
+	if macaron.Env == macaron.DEV {
+		mgo.SetDebug(true)
+		var Logger *log.Logger
+		Logger = log.New(os.Stdout ,"mgo" , log.LstdFlags)
+		mgo.SetLogger(Logger)
+	}
+	fmt.Println("create session success")
 }
 
 func CreateSession(mode string, sessionName string, host []string, databaseName string, username string, password string) error {
@@ -88,7 +96,7 @@ func CopySession(useSession string) (*mgo.Session, error) {
 	return mongoSession, nil
 }
 
-func GetDB() *mgo.Database{
+func GetDB() *mgo.Database {
 	m, err := CopySession(MonotonicSession)
 	if err != nil {
 		log.Fatal("unable to get db")

@@ -29,15 +29,16 @@ var (
 	PageSize = 30
 
 	// Qiniu Settings
-	BucketName string
-	BucketUrl  string
+	BucketName   string
+	BucketUrl    string
+	QNACCESS_KEY string
+	QNSECRET_KEY string
 
 	DbHost []string
 	DbName string
 	DbPort int
 	DbUser string
 	DbPass string
-
 )
 
 var Service struct {
@@ -69,4 +70,10 @@ func init() {
 	DbUser = Cfg.Section("mongodb").Key("USER").String()
 	DbPass = Cfg.Section("mongodb").Key("PASS").String()
 	DbPort = Cfg.Section("mongodb").Key("PORT").MustInt(27017)
+
+	BucketName = Cfg.Section("qiniu").Key("BUCKET_NAME").String()
+	BucketUrl = Cfg.Section("qiniu").Key("BUCKET_URL").String()
+	QNACCESS_KEY = Cfg.Section("qiniu").Key("ACCESS_KEY").String()
+	QNSECRET_KEY = Cfg.Section("qiniu").Key("SECRET_KEY").String()
+
 }
