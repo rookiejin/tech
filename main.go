@@ -9,6 +9,7 @@ import (
 	_ "tech/model"
 	"tech/modules/setting"
 	"tech/router"
+	"tech/modules/middleware"
 )
 
 const APP_VER = "2017.10.10"
@@ -26,16 +27,17 @@ func main() {
 		SkipLogging: true,
 	}))
 	m.Use(macaron.Renderer())
-	m.Get("/favicon.ico", func(ctx *macaron.Context) {
-		ctx.Redirect("/img/favicon.png")
-	})
 	m.Use(func(ctx *macaron.Context) {
 		ctx.Resp.Header().Set("Access-Control-Allow-Origin","*")
 		ctx.Resp.Header().Set("Access-Control-Allow-Methods","POST,GET,OPTIONS,DELETE")
 		ctx.Resp.Header().Set("Access-Control-Allow-Headers","x-requested-with,content-type")
 	})
+	m.Use(middleware.Contexter())
 	m.Options("*", func(ctx *macaron.Context) {
+	})
 
+	m.Get("/favicon.ico", func(ctx *macaron.Context) {
+		ctx.Redirect("/img/favicon.png")
 	})
 	// Routers
 	m.Group("/api", func() {
@@ -43,7 +45,7 @@ func main() {
 			m.Post("/all", router.All)
 			m.Post("/detail", router.Detail)
 		})
-	})
+	},router.IdFilter)
 	listenAddr := fmt.Sprintf("0.0.0.0:%d", setting.HttpPort)
 	if err := http.ListenAndServe(listenAddr, m); err != nil {
 		log.Fatal("fail to start server")

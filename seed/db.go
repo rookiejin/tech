@@ -34,6 +34,7 @@ func Videos(n int) {
 			tmp.Id = bson.NewObjectId()
 			tmp.CreateTime = time.Now()
 			tmp.Description = RandomDescription()
+			tmp.Title = RandomTitle()
 			tmp.TotalTime = 20
 			tmp.Pid = serie.Id
 			tmp.Vid = "10-new-featura-in-laravel-5-5-1507692340366988842.mp4"

@@ -8,7 +8,7 @@ import (
 	"tech/modules/setting"
 	"time"
 	"gopkg.in/macaron.v1"
-	"os"
+	//"os"
 )
 
 const (
@@ -52,10 +52,10 @@ func init() {
 		log.Fatalf("mongodb connection failed : %v", err)
 	}
 	if macaron.Env == macaron.DEV {
-		mgo.SetDebug(true)
-		var Logger *log.Logger
-		Logger = log.New(os.Stdout ,"mgo" , log.LstdFlags)
-		mgo.SetLogger(Logger)
+		//mgo.SetDebug(true)
+		//var Logger *log.Logger
+		//Logger = log.New(os.Stdout ,"mgo" , log.LstdFlags)
+		//mgo.SetLogger(Logger)
 	}
 	fmt.Println("create session success")
 }

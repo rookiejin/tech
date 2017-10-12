@@ -28,7 +28,7 @@ type Videos struct {
 	TotalTime   int           `bson:"total_time" json:"total_time"`
 	CreateTime  time.Time     `bson:"create_time" json:"create_time"`
 	Vid         string        `bson:"vid" json:"vid"`
-	Pid         bson.ObjectId `bson:"pid" json:"id"`
+	Pid         bson.ObjectId `bson:"pid" json:"pid"`
 }
 
 type Users struct {
