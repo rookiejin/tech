@@ -5,11 +5,11 @@ import (
 	"tech/modules/page"
 	"gopkg.in/mgo.v2/bson"
 	"qiniupkg.com/x/log.v7"
-	"tech/modules/middleware"
 	"fmt"
+	"gopkg.in/macaron.v1"
 )
 // 首页的所有视频
-func All(ctx *middleware.Context){
+func All(ctx *macaron.Context){
 	var serieses []model.Series
 	var err error
 	err = page.Page(ctx , model.SERIES , &bson.M{} , &serieses)
@@ -21,7 +21,7 @@ func All(ctx *middleware.Context){
 	}
 }
 // 详情
-func Detail(ctx *middleware.Context) {
+func Detail(ctx *macaron.Context) {
 	id := ctx.Query("id")
 	var (
 		video []model.Videos

@@ -3,10 +3,10 @@ package page
 import (
 	"tech/model"
 	"tech/modules/setting"
-	"tech/modules/middleware"
+	"gopkg.in/macaron.v1"
 )
 
-func Page(ctx *middleware.Context, table string, query interface{} , getter interface{}) error {
+func Page(ctx *macaron.Context, table string, query interface{} , getter interface{}) error {
 	db := model.GetDB()
 	pageNow := ctx.QueryInt("page")
 	if pageNow <= 0 {

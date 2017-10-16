@@ -1,12 +1,12 @@
 package router
 
 import (
-	"tech/modules/middleware"
 	"encoding/hex"
+	"gopkg.in/macaron.v1"
 )
 
 
-func IdFilter(ctx *middleware.Context){
+func IdFilter(ctx *macaron.Context){
 	id := ctx.Query("id")
 	if id != "" {
 		h , err  := hex.DecodeString(id)
