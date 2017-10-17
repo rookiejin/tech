@@ -13,6 +13,7 @@ func Home(ctx *macaron.Context)  {
 	_ = page.Page(ctx , model.SERIES , &bson.M{} , &serieses)
 	str , _ := json.Marshal(serieses)
 	ctx.Data["series"] = string(str)
+	ctx.Data["Title"] = "首页"
 	ctx.Data["Name"] = "zhangsan"
 	ctx.HTML(200,"home/index")
 }

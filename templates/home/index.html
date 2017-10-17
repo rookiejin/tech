@@ -1,6 +1,19 @@
-{{template "layout/layout" .}}
+{{template "layout/header" .}}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="search-wrap">
+
+        </div>
+    </div>
+</div>
+
+
 
 
 <script>
     var MODEL =     {{.series}} ;
 </script>
+
+
+{{ template "layout/footer" .}}
