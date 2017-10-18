@@ -28,7 +28,9 @@ func main() {
 	m.Use(macaron.Static("public", macaron.StaticOptions{
 		SkipLogging: true,
 	}))
-	m.Use(macaron.Renderer())
+	m.Use(macaron.Renderer(macaron.RenderOptions{
+		Delims: macaron.Delims{"{#", "#}"},
+	}))
 	/* 跨域
 	m.Use(func(ctx *macaron.Context) {
 		ctx.Resp.Header().Set("Access-Control-Allow-Origin","*")
@@ -67,6 +69,7 @@ func main() {
 	})
 
 	m.Get("/",router.Home)
+	m.Get("/detail",router.Detail)
 	// Routers
 	m.Group("/api", func() {
 		m.Group("/v1", func() {

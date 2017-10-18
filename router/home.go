@@ -14,6 +14,30 @@ func Home(ctx *macaron.Context)  {
 	str , _ := json.Marshal(serieses)
 	ctx.Data["series"] = string(str)
 	ctx.Data["Title"] = "首页"
-	ctx.Data["Name"] = "zhangsan"
 	ctx.HTML(200,"home/index")
+}
+
+func Detail(ctx *macaron.Context)  {
+	id := ctx.Query("id")
+	var (
+		video []model.Videos
+		err error
+		series model.Series
+		Id bson.ObjectId
+	)
+	Id = bson.ObjectIdHex(id)
+	err = model.GetSeriesById(Id , &series)
+	if err != nil {
+		ctx.HTML(404,"error/404")
+	}
+	err = page.Page(ctx ,model.VIDEOS , &bson.M{"pid" :Id},&video)
+	if err != nil {
+		ctx.HTML(404,"error/404")
+	}
+	ctx.Data ["data"] = map[string]interface{}{
+		"series" : series ,
+		"videos" : video ,
+	}
+	ctx.Data["Title"] = series.Title
+	ctx.HTML(200,"home/detail")
 }

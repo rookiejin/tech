@@ -5,32 +5,30 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ .Title }}</title>
+    <title>{# .Title #}</title>
+    <script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"  data-main="/js/app"></script>
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/flexMenu/1.4.2/flexmenu.min.js"></script>
-    <script src="/js/pkg/particle.min.js"></script>
     <link rel="stylesheet" href="//at.alicdn.com/t/font_444374_b8few6dn8h93sor.css">
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body id="body">
-<div id="particles-js"></div>
-<div class="container-fluid">
     <header class="topbar">
-        <div class="row">
-            <div class="col-md-3 col-md-offset-1">
-                <a href="#" class="logo">
-                    <img src="/img/logo.png" alt="">
-                </a>
-            </div>
-            <div class="col-md-3 col-md-offset-5">
-                <div class="menu">
-                    <ul id="menu">
-                        <li class="pull-left"><a href="#"><span class="iconfont lefticon"  aria-hidden="true">&#xe69b;</span>登录</a></li>
-                        <li class="pull-left"><a href="#"><span class="iconfont lefticon"  aria-hidden="true">&#xe647;</span>注册</a></li>
-                    </ul>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-1">
+                    <a href="#" class="logo">
+                        <img src="/img/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-md-offset-5">
+                    <div class="menu">
+                        <ul id="menu">
+                            <li class="pull-left"><a href="#"><span class="iconfont lefticon"  aria-hidden="true">&#xe69b;</span>登录</a></li>
+                            <li class="pull-left"><a href="#"><span class="iconfont lefticon"  aria-hidden="true">&#xe647;</span>注册</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
-</div>
+<div class="tmp"  id="tmp" style="height: 65px;"></div>
