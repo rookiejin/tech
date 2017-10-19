@@ -16,7 +16,10 @@ func Series(n int) {
 		tmp.Description = RandomDescription()
 		tmp.Thumb = GetThumb()
 		tmp.TotalTime = 0
+		tmp.ClickCount = 0
+		tmp.Price = 0
 		tmp.CreateTime = time.Now()
+		tmp.Banner = "http://odcijms8n.bkt.clouddn.com/58c7b9e20001679d16000960.jpg"
 		err := db.C("series").Insert(tmp)
 		if err != nil {
 			log.Fatal("插入失败", err)

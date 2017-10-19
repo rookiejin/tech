@@ -3,11 +3,11 @@ package model
 import (
 	"errors"
 	"fmt"
+	"gopkg.in/macaron.v1"
 	"gopkg.in/mgo.v2"
 	"log"
 	"tech/modules/setting"
 	"time"
-	"gopkg.in/macaron.v1"
 	//"os"
 )
 

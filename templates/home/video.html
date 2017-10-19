@@ -1,0 +1,29 @@
+{#template "layout/header" .#}
+<link rel="stylesheet" href="https://cdn.bootcss.com/video.js/6.3.3/alt/video-js-cdn.min.css">
+<link rel="stylesheet" href="/css/video.css">
+
+
+
+<div id="vue">
+    <div class="container-fluid video-container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" controls>
+                    <source src="http://oxn0qudyy.bkt.clouddn.com/10-new-featura-in-laravel-5-5-1507692340366988842.mp4" type='video/mp4' />
+            </div>
+            <div class="col-md-10 col-md-offset-1 video-title">
+                <div>
+                    <h3>{{ video.title}}</h3>
+                    <p>{{ video.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    require(["video"]);
+    var MODEL =    {# .data #};
+</script>
+{# template "layout/footer" .#}

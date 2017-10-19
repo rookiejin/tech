@@ -1,0 +1,31 @@
+.topbar{
+    border-bottom:none;
+    -webkit-box-shadow: none ;
+    -moz-box-shadow: none    ;
+    box-shadow: none    ;
+    position: relative;
+}
+.tmp{
+    height:0 !important;
+}
+
+.video-js .vjs-control{
+    outline:none;
+}
+.vjs-progress-control vjs-control{
+    background-color: #333;
+}
+.video-js .vjs-play-progress{
+    background-color: #f01616;
+}
+.vjs-progress-holder vjs-slider vjs-slider-horizontal{
+    background-color: #000;
+}
+.vjs-load-progress{
+    background-color: #000;
+}
+
+.video-title > div {
+    margin-left:40px;
+    color:#fff ;
+}

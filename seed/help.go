@@ -3,8 +3,9 @@ package seed
 import (
 	"math/rand"
 )
+
 var Titles = []string{
-	"Laravel Vue 开发 SPA 应用" ,
+	"Laravel Vue 开发 SPA 应用",
 	"Laravel 5.5 新特性",
 	"Mac 从零开始配置开发环境",
 	"PhpStorm 使用教程",
@@ -39,11 +40,11 @@ var Descriptions = []string{
 	"一个很好的学习思路就是：在学会了使用之后，再学习怎么扩展整个系统。所以在学习了如何使用 Laravel 之后，我们来学习怎么开发一个 Laravel 的扩展，包括写一下简单的单元测试和基础 CI 工具等",
 }
 
-var Thumb = []string {
+var Thumb = []string{
 	"http://odcijms8n.bkt.clouddn.com/laravel-vue-spa.jpg",
 }
 
-func RandomTitle() string{
+func RandomTitle() string {
 	rnd := rand.Intn(len(Titles) - 1)
 	return Titles[rnd]
 }

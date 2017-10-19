@@ -1,9 +1,48 @@
 {#template "layout/header" .#}
-
+<div id="vue">
+    <header class="detail-banner" :style="'background:url(' + series.banner + ')'">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="jumbotron detail-jumbotron">
+                        <h1>{{ series.title }}</h1>
+                        <p class="detail-description">{{ series.description }}</p>
+                        <p><a class="btn btn-success btn-lg detail-play-btn" href="#" role="button"> Learn </a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="row detail-banner-little">
+        <div class="col-md-1 col-md-offset-4">
+            <h4 class="detail-banner-little-title">包含</h4>
+            <p class="detail-banner-little-desc"><span class="detail-banner-little-number">{{ videos.length }}</span> 门课</p>
+        </div>
+        <div class="col-md-1">
+            <h4 class="detail-banner-little-title">时长</h4>
+            <p class="detail-banner-little-desc"><span class="detail-banner-little-number">{{ videos.length }}</span> 分钟</p>
+        </div>
+        <div class="col-md-1">
+            <h4 class="detail-banner-little-title">价格</h4>
+            <p class="detail-banner-little-desc"> <span class="detail-banner-little-nomoney">免费</span></p>
+        </div>
+        <div class="col-md-1">
+            <h4 class="detail-banner-little-title">观看次数</h4>
+            <p class="detail-banner-little-desc"><span class="detail-banner-little-number">{{ series.click_count }}</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-md-offset-3 detail-class-list">
+                <ul>
+                    <li v-for="video in videos"><a :href="'video?id=' + video.id "><span class=" iconfont">&#xe606;</span> {{ video.title }} <span class="pull-right">20.00</span></a></li>
+                </ul>
+        </div>
+    </div>
+</div>
 
 <script>
     require(["detail"]);
-    var MODEL =     {#.#} ;
+    var MODEL =    {# .data #};
 </script>
 
 

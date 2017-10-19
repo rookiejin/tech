@@ -1,12 +1,12 @@
 package page
 
 import (
+	"gopkg.in/macaron.v1"
 	"tech/model"
 	"tech/modules/setting"
-	"gopkg.in/macaron.v1"
 )
 
-func Page(ctx *macaron.Context, table string, query interface{} , getter interface{}) error {
+func Page(ctx *macaron.Context, table string, query interface{}, getter interface{}) error {
 	db := model.GetDB()
 	pageNow := ctx.QueryInt("page")
 	if pageNow <= 0 {

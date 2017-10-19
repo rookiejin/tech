@@ -9,9 +9,9 @@ import (
 	_ "tech/model"
 	"tech/modules/setting"
 	"tech/router"
-	"github.com/go-macaron/cache"
-	"github.com/go-macaron/session"
+	//"github.com/go-macaron/cache"
 	"github.com/go-macaron/csrf"
+	"github.com/go-macaron/session"
 )
 
 const APP_VER = "2017.10.10"
@@ -38,27 +38,25 @@ func main() {
 		ctx.Resp.Header().Set("Access-Control-Allow-Headers","x-requested-with,content-type")
 	})
 	*/
-	m.Use(cache.Cacher(cache.Options{
-		Adapter:"file" ,
-		AdapterConfig:"runtime/caches" ,
-		Interval: 60 ,
-		Section: "cache",
-	}))
+	//m.Use(cache.Cacher(cache.Options{
+	//	Adapter:"file" ,
+	//	AdapterConfig:"runtime/caches" ,
+	//	Interval: 60 ,
+	//	Section: "cache",
+	//}))
 
 	m.Use(session.Sessioner(session.Options{
-		Provider:"file" ,
-		ProviderConfig:"runtime/sessions",
-		CookieName:"clearcode-session" ,
-		CookiePath:"/",
-		Gclifetime:3600,
-		Maxlifetime:3600,
-		Secure: false , // https
-		CookieLifeTime:0 ,
-		Domain:"",
+		Provider:       "file",
+		ProviderConfig: "runtime/sessions",
+		CookieName:     "clearcode-session",
+		CookiePath:     "/",
+		Gclifetime:     3600,
+		Maxlifetime:    3600,
+		Secure:         false, // https
+		CookieLifeTime: 0,
+		Domain:         "",
 	}))
 	m.Use(csrf.Csrfer())
-
-
 
 	//m.Use(middleware.Contexter())
 	m.Options("*", func(ctx *macaron.Context) {
@@ -68,15 +66,16 @@ func main() {
 		ctx.Redirect("/img/favicon.png")
 	})
 
-	m.Get("/",router.Home)
-	m.Get("/detail",router.Detail)
+	m.Get("/", router.Home)
+	m.Get("/detail", router.Detail)
+	m.Get("/video", router.Video)
 	// Routers
 	m.Group("/api", func() {
 		m.Group("/v1", func() {
 			m.Post("/all", router.All)
 			m.Post("/detail", router.Detail)
 		})
-	},router.IdFilter)
+	}, router.IdFilter)
 	listenAddr := fmt.Sprintf("0.0.0.0:%d", setting.HttpPort)
 	if err := http.ListenAndServe(listenAddr, m); err != nil {
 		log.Fatal("fail to start server")

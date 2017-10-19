@@ -5,6 +5,8 @@ import (
 	"gopkg.in/macaron.v1"
 	"log"
 	"strings"
+	"gopkg.in/mgo.v2"
+	"os"
 )
 
 var (
@@ -61,6 +63,10 @@ func init() {
 		ProdMode = true
 		macaron.Env = macaron.PROD
 		macaron.ColorLog = false
+		mgo.SetDebug(true)
+		var aLogger *log.Logger
+		aLogger = log.New(os.Stdout , "" , log.LstdFlags)
+		mgo.SetLogger(aLogger)
 	}
 	HttpPort = Cfg.Section("server").Key("HTTP_PORT").MustInt(8084)
 	MaxUploadSize = Cfg.Section("server").Key("MAX_UPLOAD_SIZE").MustInt64(5)

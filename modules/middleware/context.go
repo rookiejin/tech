@@ -1,4 +1,11 @@
 package middleware
+
+import (
+	"fmt"
+	"gopkg.in/macaron.v1"
+	"strings"
+)
+
 //
 //import (
 //	"fmt"
@@ -68,3 +75,14 @@ package middleware
 //		"data":    data,
 //	})
 //}
+
+func ServerIdValidFilter(ctx *macaron.Context) {
+	if macaron.Env == macaron.PROD {
+		if err := recover(); err != nil {
+			str := fmt.Sprintf("%v", err)
+			if strings.Contains(str, "invalid input to ObjectIdHex") {
+				ctx.HTML(404, "error/404")
+			}
+		}
+	}
+}
